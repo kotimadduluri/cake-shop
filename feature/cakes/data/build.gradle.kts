@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -10,8 +11,6 @@ android {
 
     defaultConfig {
         minSdk = 29
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -21,8 +20,10 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
+    implementation(project(":feature:cakes:domain"))
+    implementation(project(":core:network"))
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
