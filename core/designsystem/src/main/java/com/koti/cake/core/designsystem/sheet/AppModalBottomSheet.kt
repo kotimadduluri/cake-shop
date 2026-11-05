@@ -12,11 +12,13 @@ import androidx.compose.ui.Modifier
 fun AppModalBottomSheet(
     onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
+    sheetState: AppSheetState = rememberAppSheetState(),
     content: @Composable ColumnScope.() -> Unit,
 ) {
     ModalBottomSheet(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
+        sheetState = sheetState.state,
         containerColor = MaterialTheme.colorScheme.surface,
         content = content,
     )
