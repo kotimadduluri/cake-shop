@@ -11,3 +11,9 @@ kotlin {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
 }
+
+dependencies {
+    api(project(":core:domain"))
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+}
