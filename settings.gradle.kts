@@ -24,4 +24,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "Cake"
 include(":app")
- 
+include(":core:domain")
+include(":feature:cakes:domain")
+include(":core:network")
+include(":core:designsystem")
+include(":core:navigation")
+include(":feature:cakes:data")
+include(":feature:cakes:presentation")
