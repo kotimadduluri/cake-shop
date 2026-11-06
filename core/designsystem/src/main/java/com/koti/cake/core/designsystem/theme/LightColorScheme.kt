@@ -13,4 +13,6 @@ internal val LightColorScheme = lightColorScheme(
     onSurfaceVariant = Color(0xFF5E6670),
     surfaceVariant = Color(0xFFECEEF1),
     outlineVariant = Color(0xFFE4E6EA),
+    inverseSurface = Color(0xFF15181C),
+    inverseOnSurface = Color(0xFFF1F3F5),
 )

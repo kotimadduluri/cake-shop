@@ -13,4 +13,6 @@ internal val DarkColorScheme = darkColorScheme(
     onSurfaceVariant = Color(0xFFA2AAB3),
     surfaceVariant = Color(0xFF262A2F),
     outlineVariant = Color(0xFF2A2E34),
+    inverseSurface = Color(0xFFF1F3F5),
+    inverseOnSurface = Color(0xFF15181C),
 )

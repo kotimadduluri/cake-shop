@@ -55,11 +55,13 @@ private fun CakeListContent(
                 title = stringResource(R.string.cakes_title),
                 accentTitle = stringResource(R.string.cakes_title_accent),
             ) {
-                AppIconButton(
-                    icon = AppIcon.Refresh,
-                    contentDescription = stringResource(R.string.cakes_refresh),
-                    onClick = { onAction(CakesAction.Refresh) },
-                )
+                if (state.cakes.isNotEmpty() || (!state.isLoading && state.error == null)) {
+                    AppIconButton(
+                        icon = AppIcon.Refresh,
+                        contentDescription = stringResource(R.string.cakes_refresh),
+                        onClick = { onAction(CakesAction.Refresh) },
+                    )
+                }
             }
             AppPullToRefresh(
                 isRefreshing = state.isRefreshing,
