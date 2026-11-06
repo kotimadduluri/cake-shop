@@ -16,16 +16,20 @@ class SafeApiCallTest {
 
     @Test
     fun `success returns the data and logs it`() = runTest {
+        // When
         val result = safeApiCall(logger, "getCakes") { "cakes" }
 
+        // Then
         assertEquals(AppResult.Success("cakes"), result)
         assertTrue(logger.debugMessages.last().startsWith("getCakes succeeded"))
     }
 
     @Test
     fun `failure returns the mapped error and logs it`() = runTest {
+        // When
         val result = safeApiCall<String>(logger, "getCakes") { throw IOException() }
 
+        // Then
         assertEquals(AppResult.Failure(DataError.NoNetwork), result)
         assertEquals(1, logger.errorMessages.size)
     }
