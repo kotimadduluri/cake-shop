@@ -1,0 +1,12 @@
+<resources>
+    <string name="cakes_title">Cake</string>
+    <string name="cakes_title_accent">Shop</string>
+    <string name="cakes_refresh">Refresh</string>
+    <string name="cakes_empty_title">No cakes right now</string>
+    <string name="cakes_empty_message">Pull down or tap refresh to check again.</string>
+    <string name="cakes_error_title">Couldn\'t load cakes</string>
+    <string name="cakes_error_no_network">Check your internet connection and try again.</string>
+    <string name="cakes_error_generic">Something went wrong. Please try again.</string>
+    <string name="cakes_retry">Retry</string>
+    <string name="cakes_refresh_failed">Couldn\'t refresh cakes</string>
+</resources>
