@@ -3,11 +3,14 @@ package com.koti.cake.core.network
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.module.Module
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import java.util.concurrent.TimeUnit
 
-val networkModule = module {
-    single<Logger> { AndroidLogger() }
+fun networkModule(): Module = module {
+    singleOf(::AndroidLogger) { bind<Logger>() }
     single { Json { ignoreUnknownKeys = true } }
     single {
         OkHttpClient.Builder()
