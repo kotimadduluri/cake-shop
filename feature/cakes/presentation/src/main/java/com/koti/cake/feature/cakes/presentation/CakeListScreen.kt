@@ -36,10 +36,11 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 internal fun CakeListScreen(
     onCakeClick: (Cake) -> Unit,
+    selectedCake: Cake?,
     viewModel: CakesViewModel = koinViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    CakeListContent(state = state, onAction = viewModel::onAction, onCakeClick = onCakeClick)
+    CakeListContent(state = state, onAction = viewModel::onAction, onCakeClick = onCakeClick, selectedCake = selectedCake)
 }
 
 @Composable
@@ -47,6 +48,7 @@ private fun CakeListContent(
     state: CakesUiState,
     onAction: (CakesAction) -> Unit,
     onCakeClick: (Cake) -> Unit,
+    selectedCake: Cake? = null,
 ) {
     val listPadding = PaddingValues(
         start = AppSpacing.md,
@@ -80,7 +82,12 @@ private fun CakeListContent(
                     ) {
                         // Cakes are only unique as a whole, two can share a title.
                         appCardItems(items = state.cakes, key = { it.toString() }) { cake ->
-                            AppListItem(title = cake.title, imageUrl = cake.imageUrl, onClick = { onCakeClick(cake) })
+                            AppListItem(
+                                title = cake.title,
+                                imageUrl = cake.imageUrl,
+                                onClick = { onCakeClick(cake) },
+                                selected = cake == selectedCake,
+                            )
                         }
                     }
                     state.isLoading -> LoadingContent(contentPadding = listPadding)

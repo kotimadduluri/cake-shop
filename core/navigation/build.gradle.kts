@@ -26,4 +26,5 @@ android {
 dependencies {
     api(libs.androidx.navigation3.ui)
     implementation(project(":core:designsystem"))
+    implementation(libs.androidx.compose.material3.adaptive.navigation3)
 }

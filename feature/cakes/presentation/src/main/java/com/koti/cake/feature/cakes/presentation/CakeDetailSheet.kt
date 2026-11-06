@@ -2,9 +2,14 @@ package com.koti.cake.feature.cakes.presentation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -26,6 +31,8 @@ internal fun CakeDetailSheet(
     Column(
         modifier = modifier
             .fillMaxWidth()
+            // Needed in the side pane; the sheet has already consumed these insets.
+            .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.End))
             .verticalScroll(rememberScrollState())
             .padding(start = AppSpacing.md, end = AppSpacing.md, bottom = AppSpacing.xl),
         verticalArrangement = Arrangement.spacedBy(AppSpacing.md),

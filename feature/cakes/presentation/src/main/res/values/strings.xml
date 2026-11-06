@@ -9,4 +9,6 @@
     <string name="cakes_error_generic">Something went wrong. Please try again.</string>
     <string name="cakes_retry">Retry</string>
     <string name="cakes_refresh_failed">Couldn\'t refresh cakes</string>
+    <string name="cakes_select_title">Select a cake</string>
+    <string name="cakes_select_message">Its details will show here.</string>
 </resources>
