@@ -34,15 +34,19 @@ import com.koti.cake.feature.cakes.domain.Cake
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-internal fun CakeListScreen(viewModel: CakesViewModel = koinViewModel()) {
+internal fun CakeListScreen(
+    onCakeClick: (Cake) -> Unit,
+    viewModel: CakesViewModel = koinViewModel(),
+) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    CakeListContent(state = state, onAction = viewModel::onAction)
+    CakeListContent(state = state, onAction = viewModel::onAction, onCakeClick = onCakeClick)
 }
 
 @Composable
 private fun CakeListContent(
     state: CakesUiState,
     onAction: (CakesAction) -> Unit,
+    onCakeClick: (Cake) -> Unit,
 ) {
     val listPadding = PaddingValues(
         start = AppSpacing.md,
@@ -76,7 +80,7 @@ private fun CakeListContent(
                     ) {
                         // Cakes are only unique as a whole, two can share a title.
                         appCardItems(items = state.cakes, key = { it.toString() }) { cake ->
-                            AppListItem(title = cake.title, imageUrl = cake.imageUrl, onClick = {})
+                            AppListItem(title = cake.title, imageUrl = cake.imageUrl, onClick = { onCakeClick(cake) })
                         }
                     }
                     state.isLoading -> LoadingContent(contentPadding = listPadding)
@@ -120,7 +124,7 @@ private val previewCakes = listOf(
 @Composable
 private fun CakeListPreview() {
     AppTheme {
-        CakeListContent(state = CakesUiState(cakes = previewCakes), onAction = {})
+        CakeListContent(state = CakesUiState(cakes = previewCakes), onAction = {}, onCakeClick = {})
     }
 }
 
@@ -129,6 +133,6 @@ private fun CakeListPreview() {
 @Composable
 private fun CakeListErrorPreview() {
     AppTheme {
-        CakeListContent(state = CakesUiState(error = DataError.NoNetwork), onAction = {})
+        CakeListContent(state = CakesUiState(error = DataError.NoNetwork), onAction = {}, onCakeClick = {})
     }
 }

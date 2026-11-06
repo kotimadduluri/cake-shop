@@ -8,3 +8,10 @@ data object CakesGraph : NavKey
 
 @Serializable
 internal data object CakeList : NavKey
+
+@Serializable
+internal data class CakeDetail(
+    val title: String,
+    val description: String,
+    val imageUrl: String,
+) : NavKey
