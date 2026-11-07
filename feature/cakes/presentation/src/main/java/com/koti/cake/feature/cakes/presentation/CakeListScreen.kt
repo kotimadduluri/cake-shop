@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,9 +38,12 @@ import org.koin.compose.viewmodel.koinViewModel
 internal fun CakeListScreen(
     onCakeClick: (Cake) -> Unit,
     selectedCake: Cake?,
+    onHasCakesChange: (Boolean) -> Unit,
     viewModel: CakesViewModel = koinViewModel(),
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val hasCakes = state.cakes.isNotEmpty()
+    LaunchedEffect(hasCakes) { onHasCakesChange(hasCakes) }
     CakeListContent(state = state, onAction = viewModel::onAction, onCakeClick = onCakeClick, selectedCake = selectedCake)
 }
 
