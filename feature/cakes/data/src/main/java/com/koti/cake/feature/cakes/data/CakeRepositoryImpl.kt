@@ -11,6 +11,7 @@ internal class CakeRepositoryImpl(
     private val logger: Logger,
 ) : CakeRepository {
 
+    // TODO: cache in Room so the list shows offline and right away after process death.
     override suspend fun getCakes(): AppResult<List<Cake>> =
         safeApiCall(logger, "getCakes") { api.getCakes().map { it.toCake() } }
 }

@@ -19,6 +19,7 @@ android {
 
     buildTypes {
         release {
+            // TODO: add a signing config for release.
             optimization {
                 enable = true
                 packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")

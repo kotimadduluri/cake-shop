@@ -84,7 +84,7 @@ internal fun CakeListContent(
                         modifier = Modifier.fillMaxSize(),
                         contentPadding = listPadding,
                     ) {
-                        // Cakes are only unique as a whole, two can share a title.
+                        // TODO: key by id if the API adds one. Cakes are only unique as a whole, two can share a title.
                         appCardItems(items = state.cakes, key = { it.toString() }) { cake ->
                             AppListItem(
                                 title = cake.title,

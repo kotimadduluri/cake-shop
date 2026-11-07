@@ -1,3 +1,4 @@
+// TODO: move shared Android and Compose setup into convention plugins.
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
