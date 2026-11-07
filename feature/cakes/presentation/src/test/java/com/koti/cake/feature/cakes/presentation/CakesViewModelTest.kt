@@ -2,8 +2,10 @@ package com.koti.cake.feature.cakes.presentation
 
 import com.koti.cake.core.domain.AppResult
 import com.koti.cake.core.domain.DataError
-import com.koti.cake.feature.cakes.domain.Cake
+import com.koti.cake.feature.cakes.domain.FakeCakeRepository
 import com.koti.cake.feature.cakes.domain.GetCakesUseCase
+import com.koti.cake.feature.cakes.domain.TestCakes.banana
+import com.koti.cake.feature.cakes.domain.TestCakes.lemon
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -22,9 +24,6 @@ class CakesViewModelTest {
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
-
-    private val lemon = Cake("Lemon Cheesecake", "A cheesecake made of lemon", "https://example.com/lemon.jpg")
-    private val banana = Cake("Banana Cake", "Donkey kongs favourite", "https://example.com/banana.jpg")
 
     private fun TestScope.collect(viewModel: CakesViewModel) =
         backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) { viewModel.uiState.collect() }

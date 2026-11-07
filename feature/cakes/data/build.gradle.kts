@@ -25,5 +25,6 @@ dependencies {
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.core)
     testImplementation(libs.junit)
+    testImplementation(testFixtures(project(":core:network")))
     testImplementation(libs.kotlinx.coroutines.test)
 }

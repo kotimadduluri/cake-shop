@@ -2,6 +2,7 @@ package com.koti.cake.feature.cakes.data
 
 import com.koti.cake.core.domain.AppResult
 import com.koti.cake.core.domain.DataError
+import com.koti.cake.core.network.FakeLogger
 import com.koti.cake.feature.cakes.domain.Cake
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

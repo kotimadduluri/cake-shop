@@ -1,8 +1,6 @@
-package com.koti.cake.feature.cakes.presentation
+package com.koti.cake.feature.cakes.domain
 
 import com.koti.cake.core.domain.AppResult
-import com.koti.cake.feature.cakes.domain.Cake
-import com.koti.cake.feature.cakes.domain.CakeRepository
 import kotlinx.coroutines.CompletableDeferred
 
 class FakeCakeRepository(var result: AppResult<List<Cake>>) : CakeRepository {

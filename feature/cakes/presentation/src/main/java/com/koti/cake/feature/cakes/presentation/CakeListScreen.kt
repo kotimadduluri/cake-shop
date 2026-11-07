@@ -48,7 +48,7 @@ internal fun CakeListScreen(
 }
 
 @Composable
-private fun CakeListContent(
+internal fun CakeListContent(
     state: CakesUiState,
     onAction: (CakesAction) -> Unit,
     onCakeClick: (Cake) -> Unit,
